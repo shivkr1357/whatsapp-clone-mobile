@@ -1,83 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import {
-  Alert,
-  Button,
-  Dimensions,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
-import ReactNativeBiometrics from 'react-native-biometrics';
+import React from 'react';
 
-const height = Dimensions.get('screen').height;
+import Navigation from './src/navigation';
 
-const rnBiometrics = new ReactNativeBiometrics();
-
-function App(): React.JSX.Element {
-  const [biometricsAvailable, setBiometricsAvailable] = useState(false);
-
-  useEffect(() => {
-    // Check if biometrics are available
-    rnBiometrics
-      .isSensorAvailable()
-      .then(resultObject => {
-        const {available, biometryType} = resultObject;
-        if (available && biometryType) {
-          setBiometricsAvailable(true);
-        } else {
-          Alert.alert('Biometrics not available on this device');
-        }
-      })
-      .catch(err => {
-        console.log('Error: ', err);
-      });
-  }, []);
-
-  const authenticate = () => {
-    if (biometricsAvailable) {
-      rnBiometrics
-        .simplePrompt({promptMessage: 'Authenticate'})
-        .then(resultObject => {
-          const {success} = resultObject;
-          if (success) {
-            Alert.alert('Authentication successful');
-          } else {
-            Alert.alert('Authentication failed');
-          }
-        })
-        .catch(() => {
-          Alert.alert('Biometric prompt failed');
-        });
-    }
-  };
-
-  return (
-    <SafeAreaView>
-      <View style={styles.logo}>
-        <Text>Whats App Clone Locked</Text>
-      </View>
-      <View style={styles.button}>
-        <Button title="Click to unlock" onPress={authenticate} />
-      </View>
-    </SafeAreaView>
-  );
-}
+const App = () => {
+  return <Navigation />;
+};
 
 export default App;
-
-const styles = StyleSheet.create({
-  logo: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-
-    top: 50,
-  },
-  button: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    top: height / 2.5,
-  },
-});
