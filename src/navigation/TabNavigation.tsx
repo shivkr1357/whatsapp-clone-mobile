@@ -1,21 +1,15 @@
-import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Chat from './screens/Chats/Chat';
-import Home from './screens/Home/Home';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import LockScreen from './screens/Home/LockScreen';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
-import Updates from './screens/Updates/Updates';
-import Communities from './screens/Communities/Communities';
-import Calls from './screens/Calls/Calls';
+import Updates from '../screens/Updates/Updates';
+import Communities from '../screens/Communities/Communities';
+import Calls from '../screens/Calls/Calls';
+import ChatStackNavigator from './ChatStack';
 
 const Tab = createBottomTabNavigator();
-const Stack = createNativeStackNavigator();
 
-const TabScreen = () => {
+const TabNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -37,7 +31,7 @@ const TabScreen = () => {
       }}>
       <Tab.Screen
         name="Chat"
-        component={Chat}
+        component={ChatStackNavigator}
         options={{
           tabBarIcon: ({color, size}) => (
             <MaterialIcons name="chat" color={color} size={size} />
@@ -75,17 +69,4 @@ const TabScreen = () => {
   );
 };
 
-const Navigation = () => {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Home"
-        screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Home" component={LockScreen} />
-        <Stack.Screen name="TabScreen" component={TabScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-};
-
-export default Navigation;
+export default TabNavigator;

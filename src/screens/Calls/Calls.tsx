@@ -1,11 +1,15 @@
 import React from 'react';
 import {Text, View} from 'react-native';
+import Header from '../../components/TabHeader/Header';
 
 const Calls = () => {
   return (
-    <View>
-      <Text>Calls</Text>
-    </View>
+    <>
+      <Header title={'Calls'} />
+      <View>
+        <Text>Calls</Text>
+      </View>
+    </>
   );
 };
 

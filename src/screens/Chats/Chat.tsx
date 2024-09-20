@@ -1,11 +1,27 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
+import Header from '../../components/TabHeader/Header';
+import SingleChat from '../../components/SingleChat/SingleChat';
 
 const Chat = () => {
   return (
-    <View>
-      <Text>Chat</Text>
-    </View>
+    <>
+      <Header title={'WhatsApp'} />
+      <ScrollView>
+        <SingleChat />
+        <SingleChat />
+        <SingleChat />
+        <SingleChat />
+        <SingleChat />
+        <SingleChat />
+        <SingleChat />
+        <SingleChat />
+        <SingleChat />
+        <SingleChat />
+        <SingleChat />
+        <SingleChat />
+      </ScrollView>
+    </>
   );
 };
 
