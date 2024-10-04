@@ -3,6 +3,7 @@ import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Feather from 'react-native-vector-icons/Feather';
+import Fontisto from 'react-native-vector-icons/Fontisto';
 
 const Header = ({title, onSearch, onOptions}: any) => {
   return (
@@ -21,6 +22,11 @@ const Header = ({title, onSearch, onOptions}: any) => {
         <TouchableOpacity onPress={onSearch}>
           <Feather name="camera" size={25} style={styles.icon} />
         </TouchableOpacity>
+        {title === 'Calls' && (
+          <TouchableOpacity onPress={onSearch}>
+            <Fontisto name="search" size={25} style={styles.icon} />
+          </TouchableOpacity>
+        )}
         <TouchableOpacity onPress={onOptions}>
           <FontAwesome name="ellipsis-v" size={25} />
         </TouchableOpacity>

@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {Avatar} from 'react-native-paper';
 
-const ViewedStauts = () => {
+const ActiveStatus = () => {
   return (
     <View style={styles.container}>
       <View style={styles.statusContainer}>
@@ -16,7 +16,7 @@ const ViewedStauts = () => {
   );
 };
 
-export default ViewedStauts;
+export default ActiveStatus;
 
 const styles = StyleSheet.create({
   container: {
@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   statusContainer: {
-    // marginVertical: 2,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',

@@ -68,9 +68,10 @@ const styles = StyleSheet.create({
   myStatusText: {
     fontSize: 18,
     fontWeight: 'bold',
+    color: '#222',
   },
   myStatusAdd: {
     fontSize: 14,
-    fontWeight: '300',
+    fontWeight: '500',
   },
 });
