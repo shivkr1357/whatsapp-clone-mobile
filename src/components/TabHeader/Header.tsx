@@ -1,13 +1,22 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet, Platform} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import Fontisto from 'react-native-vector-icons/Fontisto';
+import {useNavigation} from '@react-navigation/native';
 
 const Header = ({title, onSearch, onOptions}: any) => {
+  const navigation = useNavigation();
   return (
     <View style={styles.headerContainer}>
+      {title !== 'WhatsApp' && (
+        <View>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Feather name="arrow-left" color={'black'} size={20} />
+          </TouchableOpacity>
+        </View>
+      )}
       <View style={styles.leftContainer}>
         <Text style={styles.title}>{title}</Text>
       </View>
@@ -42,6 +51,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     height: 60,
     paddingHorizontal: 15,
+    marginTop: Platform.OS === 'ios' ? 32 : 0,
   },
   leftContainer: {
     flexDirection: 'column',

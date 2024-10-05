@@ -12,10 +12,10 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import RecentCalls from '../../components/Calls/RecentCalls';
 
-const Calls = () => {
+const Calls = ({navigation}: any) => {
   return (
     <>
-      <Header title={'Calls'} />
+      <Header navigation={navigation} title={'Calls'} />
       <ScrollView style={styles.container}>
         <Text style={styles.favouriteText}>Favourites</Text>
         <View style={styles.favouriteAddContainer}>

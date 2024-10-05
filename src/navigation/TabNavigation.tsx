@@ -6,6 +6,7 @@ import Updates from '../screens/Updates/Updates';
 import Communities from '../screens/Communities/Communities';
 import Calls from '../screens/Calls/Calls';
 import ChatStackNavigator from './ChatStack';
+import {Platform} from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,7 +16,7 @@ const TabNavigator = () => {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          height: 80,
+          height: Platform.OS === 'ios' ? 100 : 80,
           alignItems: 'center',
           justifyContent: 'center',
         },
@@ -51,9 +52,12 @@ const TabNavigator = () => {
         name="Communities"
         component={Communities}
         options={{
-          tabBarIcon: ({color, size}) => (
-            <FontAwesome6 name="people-group" color={color} size={size} />
-          ),
+          tabBarIcon: ({color, size}) =>
+            Platform.OS === 'ios' ? (
+              <MaterialIcons name="people-alt" color={color} size={size} />
+            ) : (
+              <FontAwesome6 name="people-group" color={color} size={size} />
+            ),
         }}
       />
       <Tab.Screen

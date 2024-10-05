@@ -3,6 +3,7 @@ import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LockScreen from '../screens/Home/LockScreen';
 import TabNavigator from './TabNavigation';
+import {Platform} from 'react-native';
 
 const Stack = createNativeStackNavigator();
 

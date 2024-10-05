@@ -4,6 +4,7 @@ import {
   Alert,
   Button,
   Dimensions,
+  Platform,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -17,8 +18,6 @@ const rnBiometrics = new ReactNativeBiometrics();
 
 function LockScreen({navigation}: any): React.JSX.Element {
   const [biometricsAvailable, setBiometricsAvailable] = useState(false);
-
-  const nav = useNavigation();
 
   useEffect(() => {
     // Check if biometrics are available
@@ -61,7 +60,14 @@ function LockScreen({navigation}: any): React.JSX.Element {
         <Text>Whats App Clone Locked</Text>
       </View>
       <View style={styles.button}>
-        <Button title="Click to unlock" onPress={authenticate} />
+        <Button
+          title="Click to unlock"
+          onPress={
+            Platform.OS === 'ios'
+              ? navigation.navigate('TabScreen')
+              : authenticate
+          }
+        />
       </View>
     </SafeAreaView>
   );

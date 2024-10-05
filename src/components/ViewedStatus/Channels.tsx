@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Dimensions,
+  Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
   button: {
     borderColor: 'gray',
     padding: 5,
-    paddingHorizontal: 35,
+    paddingHorizontal: Platform.OS === 'ios' ? 30 : 35,
     marginTop: 15,
     marginBottom: -5,
     borderRadius: 50,
