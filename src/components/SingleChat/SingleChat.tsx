@@ -1,10 +1,16 @@
 import React from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {Avatar} from 'react-native-paper';
 
-const SingleChat = () => {
+const SingleChat = ({onPress}: {onPress: () => void}) => {
   return (
-    <ScrollView style={styles.scrollView}>
+    <TouchableOpacity onPress={onPress} style={styles.scrollView}>
       <View style={styles.chatContainer}>
         <View style={styles.nameContainer}>
           <View>
@@ -19,7 +25,7 @@ const SingleChat = () => {
           <Text style={styles.lastSeenText}>Yesterday</Text>
         </View>
       </View>
-    </ScrollView>
+    </TouchableOpacity>
   );
 };
 

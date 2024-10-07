@@ -1,25 +1,20 @@
 import React from 'react';
-import {ScrollView, Text, View} from 'react-native';
+import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import Header from '../../components/TabHeader/Header';
 import SingleChat from '../../components/SingleChat/SingleChat';
 
-const Chat = () => {
+const Chat = ({navigation}: any) => {
+  const handleChatPress = (chatId: number) => {
+    // Navigate to another screen, passing the chatId
+    navigation.navigate('SingleChat', {chatId});
+  };
   return (
     <>
       <Header title={'WhatsApp'} />
       <ScrollView>
-        <SingleChat />
-        <SingleChat />
-        <SingleChat />
-        <SingleChat />
-        <SingleChat />
-        <SingleChat />
-        <SingleChat />
-        <SingleChat />
-        <SingleChat />
-        <SingleChat />
-        <SingleChat />
-        <SingleChat />
+        {[...Array(12)].map((_, index) => (
+          <SingleChat key={index} onPress={() => handleChatPress(index)} />
+        ))}
       </ScrollView>
     </>
   );

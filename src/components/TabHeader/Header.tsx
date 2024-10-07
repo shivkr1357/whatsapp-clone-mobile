@@ -10,7 +10,7 @@ const Header = ({title, onSearch, onOptions}: any) => {
   const navigation = useNavigation();
   return (
     <View style={styles.headerContainer}>
-      {title !== 'WhatsApp' && (
+      {Platform.OS === 'ios' && title !== 'WhatsApp' && (
         <View>
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Feather name="arrow-left" color={'black'} size={20} />
